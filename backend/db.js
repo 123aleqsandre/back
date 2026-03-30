@@ -1,8 +1,15 @@
-import mysql from "mysql2";
+const mysql = require("mysql2");
 
-export const db = mysql.createPool({
+const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "school"
+    database: "your_database",
 });
+
+db.connect((err) => {
+    if (err) throw err;
+    console.log("Database connected!");
+});
+
+module.exports = db;
